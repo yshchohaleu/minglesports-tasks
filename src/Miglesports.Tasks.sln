@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minglesports.Tasks.Core", "Minglesports.Tasks.Core\Minglesports.Tasks.Core.csproj", "{94B6D67F-5EE0-4C50-A379-19F2BF29D2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minglesports.Tasks.BuildingBlocks", "Minglesports.Tasks.BuildingBlocks\Minglesports.Tasks.BuildingBlocks.csproj", "{97D4CD69-2E19-400F-A135-D88FFE1D75F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minglesports.Tasks.Providers", "Minglesports.Tasks.Providers\Minglesports.Tasks.Providers.csproj", "{1BFD28CA-01C1-4141-B45D-C63A87047E10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minglesports.Tasks.Web", "Minglesports.Tasks.Web\Minglesports.Tasks.Web.csproj", "{CA82556F-0EF9-4C02-818F-06B339A57629}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minglesports.Tasks.Tests", "Minglesports.Tasks.Tests\Minglesports.Tasks.Tests.csproj", "{E2C26EA3-D46A-4610-A8C8-C74C9E5780CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5112A7AC-9138-472F-AC45-F7BAC9286C08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94B6D67F-5EE0-4C50-A379-19F2BF29D2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B6D67F-5EE0-4C50-A379-19F2BF29D2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B6D67F-5EE0-4C50-A379-19F2BF29D2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B6D67F-5EE0-4C50-A379-19F2BF29D2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D4CD69-2E19-400F-A135-D88FFE1D75F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D4CD69-2E19-400F-A135-D88FFE1D75F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D4CD69-2E19-400F-A135-D88FFE1D75F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D4CD69-2E19-400F-A135-D88FFE1D75F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BFD28CA-01C1-4141-B45D-C63A87047E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BFD28CA-01C1-4141-B45D-C63A87047E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BFD28CA-01C1-4141-B45D-C63A87047E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BFD28CA-01C1-4141-B45D-C63A87047E10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA82556F-0EF9-4C02-818F-06B339A57629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA82556F-0EF9-4C02-818F-06B339A57629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA82556F-0EF9-4C02-818F-06B339A57629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA82556F-0EF9-4C02-818F-06B339A57629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C26EA3-D46A-4610-A8C8-C74C9E5780CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C26EA3-D46A-4610-A8C8-C74C9E5780CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C26EA3-D46A-4610-A8C8-C74C9E5780CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C26EA3-D46A-4610-A8C8-C74C9E5780CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E2C26EA3-D46A-4610-A8C8-C74C9E5780CA} = {5112A7AC-9138-472F-AC45-F7BAC9286C08}
+	EndGlobalSection
+EndGlobal
