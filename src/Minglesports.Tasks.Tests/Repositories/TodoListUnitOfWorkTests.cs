@@ -18,11 +18,12 @@ namespace Minglesports.Tasks.Tests.Repositories
         public async Task GivenTodoList_WhenFind_ShouldBeReturned()
         {
             var todoList = TodoListAggregate.Create(Fixture.Create<UserId>());
+            var now = DateTime.UtcNow;
             3.Times(() => todoList.AddTask(
                 Fixture.Create<TaskId>(),
                 Fixture.Create<TaskName>(),
-                Fixture.Create<DateTime>(),
-                Fixture.Create<DateTime>(),
+                now.AddDays(1),
+                now,
                 Fixture.Create<string>()
             ));
 

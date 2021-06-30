@@ -24,18 +24,18 @@ namespace Minglesports.Tasks.Core.Domain
             };
         }
 
-        public void AddTask(TaskId id, TaskName name, DateTime deadline, DateTime now, string description = null)
+        public void AddTask(TaskId id, TaskName name, DateTime deadline, DateTime createdAtUtc, string description = null)
         {
             if (!_tasks.Exists(id))
             {
-                _tasks.Add(TaskEntity.Create(id, name, deadline, now, description));
+                _tasks.Add(TaskEntity.Create(id, name, deadline, createdAtUtc, description));
             }
         }
 
-        public void UpdateTask(TaskId id, TaskName name, DateTime deadlineUtc, string description = null)
+        public void UpdateTask(TaskId id, TaskName name, DateTime deadlineUtc, TaskStatus status, string description = null)
         {
-            var task = GetTaskById(id);
-            task.Update(name, deadlineUtc, description);
+            var task = GetTaskByIdOrThrow(id);
+            task.Update(name, deadlineUtc, status, description);
         }
 
         public void DeleteTask(TaskId id)
@@ -47,7 +47,7 @@ namespace Minglesports.Tasks.Core.Domain
             }
         }
 
-        private TaskEntity GetTaskById(TaskId id)
+        private TaskEntity GetTaskByIdOrThrow(TaskId id)
         {
             var task = _tasks.GetById(id);
             if (task == null)

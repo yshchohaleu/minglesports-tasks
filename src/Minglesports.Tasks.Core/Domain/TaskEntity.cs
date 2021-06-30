@@ -1,6 +1,7 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 using Minglesports.Tasks.BuildingBlocks.Domain;
+using Minglesports.Tasks.BuildingBlocks.Guards;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
 
 namespace Minglesports.Tasks.Core.Domain
@@ -22,11 +23,12 @@ namespace Minglesports.Tasks.Core.Domain
             TaskId id,
             TaskName name,
             DateTime deadlineUtc,
-            DateTime now,
+            DateTime createdAtUtc,
             string description = null)
         {
             Guard.Against.Null(name, nameof(name));
             Guard.Against.Default(deadlineUtc, nameof(deadlineUtc));
+            Guard.Against.GreaterThan(createdAtUtc, deadlineUtc, nameof(deadlineUtc));
 
             return new()
             {
@@ -36,18 +38,21 @@ namespace Minglesports.Tasks.Core.Domain
                 Description = description,
 
                 Status = TaskStatus.Pending,
-                CreateAtUtc = now
+                CreateAtUtc = createdAtUtc
             };
         }
 
-        public void Update(TaskName name, DateTime deadlineUtc, string description)
+        public void Update(TaskName name, DateTime deadlineUtc, TaskStatus status, string description)
         {
             Guard.Against.Null(name, nameof(name));
             Guard.Against.Default(deadlineUtc, nameof(deadlineUtc));
 
+            // check deadline ?
+
             Name = name;
             DeadlineUtc = deadlineUtc;
             Description = description;
+            Status = status;
         }
     }
 }

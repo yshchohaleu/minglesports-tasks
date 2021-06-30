@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Text.RegularExpressions;
 using Ardalis.GuardClauses;
 using Minglesports.Tasks.BuildingBlocks.Domain;
 using Minglesports.Tasks.BuildingBlocks.UserContext;
@@ -8,13 +8,15 @@ namespace Minglesports.Tasks.Core.Domain.ValueObjects
 {
     public class TodoListId : ValueObject
     {
+        private const string Prefix = "todo";
+
         private string _value;
         public string Value
         {
             get => _value;
             private set
             {
-                var userId = UserId.Define(value.Split('|').Last());
+                var userId = UserId.Define(Regex.Replace(value, $"^{Prefix}\\|", string.Empty));
                 UserId = userId;
                 _value = value;
             }
@@ -35,7 +37,7 @@ namespace Minglesports.Tasks.Core.Domain.ValueObjects
             Guard.Against.NullOrEmpty(userId, nameof(userId));
             return new TodoListId
             {
-                Value = $"todo|{userId}"
+                Value = $"{Prefix}|{userId}"
             };
         }
 

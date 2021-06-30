@@ -4,7 +4,6 @@ using Ardalis.GuardClauses;
 using MediatR;
 using Minglesports.Tasks.BuildingBlocks.UserContext;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
-using Minglesports.Tasks.Core.OperationHandlers.Requests;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.Ports;
 using NotFoundException = Minglesports.Tasks.Core.Exceptions.NotFoundException;
@@ -32,7 +31,7 @@ namespace Minglesports.Tasks.Core.OperationHandlers
             if (todoList == null)
                 throw new NotFoundException($"Todo list for user {user.UserId} not found");
 
-            todoList.UpdateTask(request.Id, request.Name, request.DeadlineUtc, request.Description);
+            todoList.UpdateTask(request.Id, request.Name, request.DeadlineUtc, request.Status, request.Description);
 
             await _unitOfWork.CommitAsync();
         }

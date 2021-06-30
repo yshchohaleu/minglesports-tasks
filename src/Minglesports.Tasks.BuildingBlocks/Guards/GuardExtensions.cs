@@ -16,5 +16,15 @@ namespace Minglesports.Tasks.BuildingBlocks.Guards
 
             return value;
         }
+
+        public static DateTime? GreaterThan(this IGuardClause _, DateTime? date, DateTime? compareDate, string parameterName)
+        {
+            if (date != null && compareDate != null && date.Value.Date > compareDate.Value.Date)
+            {
+                throw new ArgumentException($"'{parameterName}' should be greater than '{compareDate.Value.Date}'");
+            }
+
+            return date;
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using AutoFixture;
 using Minglesports.Tasks.BuildingBlocks.UserContext;
 using Minglesports.Tasks.Core.Domain;
@@ -25,14 +24,35 @@ namespace Minglesports.Tasks.Tests
 
             fixture.Customize<TaskEntity>(composer =>
                 composer.FromFactory(() =>
-                        TaskEntity.Create(
-                                fixture.Create<TaskId>(),
-                                fixture.Create<TaskName>(),
-                                fixture.Create<DateTime>(),
-                                fixture.Create<DateTime>(),
-                                fixture.Create<string>()
-                            )
-                    ));
+                {
+                    var now = DateTime.UtcNow;
+                    var tomorrow = DateTime.UtcNow.AddDays(1);
+                    var task = TaskEntity.Create(
+                        fixture.Create<TaskId>(),
+                        fixture.Create<TaskName>(),
+                        tomorrow,
+                        now,
+                        fixture.Create<string>()
+                    );
+                    return task;
+                }));
+
+            fixture.Customize<TodoListAggregate>(composer =>
+                composer.FromFactory(() =>
+                    {
+                        var now = DateTime.UtcNow;
+                        var tomorrow = DateTime.UtcNow.AddDays(1);
+                        var todoList = TodoListAggregate.Create(fixture.Create<UserId>());
+
+                        todoList.AddTask(
+                            fixture.Create<TaskId>(),
+                            fixture.Create<TaskName>(),
+                            tomorrow,
+                            now,
+                            fixture.Create<string>());
+                        return todoList;
+                    }
+                ));
         }
     }
 }
