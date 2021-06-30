@@ -8,14 +8,14 @@ using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.Ports;
 using NotFoundException = Minglesports.Tasks.Core.Exceptions.NotFoundException;
 
-namespace Minglesports.Tasks.Core.OperationHandlers
+namespace Minglesports.Tasks.Application.OperationHandlers
 {
-    internal class UpdateTaskCommandHandler : AsyncRequestHandler<UpdateTaskCommand>
+    internal class DeleteTaskCommandHandler : AsyncRequestHandler<DeleteTaskCommand>
     {
         private readonly ITodoListUnitOfWork _unitOfWork;
         private readonly IUserContextProvider _userContextProvider;
 
-        public UpdateTaskCommandHandler(
+        public DeleteTaskCommandHandler(
             ITodoListUnitOfWork unitOfWork,
             IUserContextProvider userContextProvider)
         {
@@ -23,15 +23,15 @@ namespace Minglesports.Tasks.Core.OperationHandlers
             _userContextProvider = Guard.Against.Null(userContextProvider, nameof(userContextProvider));
         }
 
-        protected override async Task Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
+        protected override async Task Handle(DeleteTaskCommand request, CancellationToken cancellationToken)
         {
             var user = _userContextProvider.UserContext.User;
-            var todoList = await _unitOfWork.GetAsync(TodoListId.Define(user.UserId));
+            var todoList = await _unitOfWork.GetAsync(TodoListIdentifier.Define(user.UserId));
 
             if (todoList == null)
                 throw new NotFoundException($"Todo list for user {user.UserId} not found");
 
-            todoList.UpdateTask(request.Id, request.Name, request.DeadlineUtc, request.Status, request.Description);
+            todoList.DeleteTask(request.Id);
 
             await _unitOfWork.CommitAsync();
         }

@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Minglesports.Tasks.Application\Minglesports.Tasks.Application.csproj" />
       <ProjectReference Include="..\Minglesports.Tasks.Core\Minglesports.Tasks.Core.csproj" />
       <ProjectReference Include="..\Minglesports.Tasks.Providers\Minglesports.Tasks.Providers.csproj" />
     </ItemGroup>

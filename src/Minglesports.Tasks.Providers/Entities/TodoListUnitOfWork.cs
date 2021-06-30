@@ -16,7 +16,7 @@ namespace Minglesports.Tasks.Providers.Entities
         {
         }
 
-        public async Task<TodoListAggregate> GetOrCreateAsync(TodoListId id, Func<TodoListAggregate> createFunc)
+        public async Task<TodoListAggregate> GetOrCreateAsync(TodoListIdentifier id, Func<TodoListAggregate> createFunc)
         {
             var todoList = await DbContext.TodoLists.SingleOrDefaultAsync(todo => todo.EntityId.Value == id.Value);
             if (todoList == null)
@@ -28,7 +28,7 @@ namespace Minglesports.Tasks.Providers.Entities
             return todoList;
         }
 
-        public Task<TodoListAggregate> GetAsync(TodoListId id)
+        public Task<TodoListAggregate> GetAsync(TodoListIdentifier id)
         {
             return DbContext.TodoLists.SingleOrDefaultAsync(todo => todo.EntityId.Value == id.Value);
         }

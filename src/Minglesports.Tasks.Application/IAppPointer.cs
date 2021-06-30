@@ -1,4 +1,4 @@
-﻿namespace Minglesports.Tasks.Core
+﻿namespace Minglesports.Tasks.Application
 {
     public interface IAppPointer
     {

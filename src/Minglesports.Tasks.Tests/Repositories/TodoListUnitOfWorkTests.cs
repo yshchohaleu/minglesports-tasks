@@ -45,7 +45,7 @@ namespace Minglesports.Tasks.Tests.Repositories
         [Fact]
         public async Task GivenTodoListId_WhenFindAndDoesNotExists_NewOneShouldBeCreate()
         {
-            var id = Fixture.Create<TodoListId>();
+            var id = Fixture.Create<TodoListIdentifier>();
             var todoListUnitOfWork = new TodoListUnitOfWork(DbContext, new StubMessageSender());
 
             // act

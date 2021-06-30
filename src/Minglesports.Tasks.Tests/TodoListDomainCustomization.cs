@@ -13,8 +13,8 @@ namespace Minglesports.Tasks.Tests
             fixture.Customize<UserId>(composer =>
                 composer.FromFactory(() => UserId.Define($"user|{fixture.Create<string>()}")));
 
-            fixture.Customize<TodoListId>(composer =>
-                composer.FromFactory(() => TodoListId.Define(fixture.Create<UserId>())));
+            fixture.Customize<TodoListIdentifier>(composer =>
+                composer.FromFactory(() => TodoListIdentifier.Define(fixture.Create<UserId>())));
 
             fixture.Customize<TaskName>(composer =>
                 composer.FromFactory(() => TaskName.Define($"task|{fixture.Create<string>()}")));

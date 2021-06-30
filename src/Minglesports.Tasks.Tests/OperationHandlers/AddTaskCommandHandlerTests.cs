@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
 using MediatR;
+using Minglesports.Tasks.Application.OperationHandlers;
 using Minglesports.Tasks.BuildingBlocks;
 using Minglesports.Tasks.BuildingBlocks.UserContext;
 using Minglesports.Tasks.Core.Domain;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
-using Minglesports.Tasks.Core.OperationHandlers;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.Ports;
 using Moq;
@@ -77,7 +77,7 @@ namespace Minglesports.Tasks.Tests.OperationHandlers
 
             public TestFixture WithTodoList(TodoListAggregate todoList)
             {   
-                _todoListUnitOfWork.Setup(x => x.GetOrCreateAsync(It.IsAny<TodoListId>(),
+                _todoListUnitOfWork.Setup(x => x.GetOrCreateAsync(It.IsAny<TodoListIdentifier>(),
                         It.IsAny<Func<TodoListAggregate>>()
                     ))
                     .ReturnsAsync(todoList);

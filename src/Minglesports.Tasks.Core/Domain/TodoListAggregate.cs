@@ -7,7 +7,7 @@ using Minglesports.Tasks.Core.Exceptions;
 
 namespace Minglesports.Tasks.Core.Domain
 {
-    public class TodoListAggregate : BaseAggregateRoot<TodoListId>
+    public class TodoListAggregate : BaseAggregateRoot<TodoListIdentifier>
     {
         private TodoListAggregate()
         {
@@ -20,7 +20,7 @@ namespace Minglesports.Tasks.Core.Domain
         {
             return new()
             {
-                EntityId = TodoListId.Define(userId)
+                EntityId = TodoListIdentifier.Define(userId)
             };
         }
 

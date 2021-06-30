@@ -22,6 +22,12 @@ namespace Minglesports.Tasks.Providers.Entities.Configuration
                 .IsRequired();
 
             builder.OwnsOne(p => p.EntityId)
+                .Property(p => p.UserId)
+                .HasColumnName("UserId")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.OwnsOne(p => p.EntityId)
                 .Ignore(s => s.UserId);
 
             builder.OwnsOne(p => p.EntityId)

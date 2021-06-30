@@ -8,7 +8,7 @@ namespace Minglesports.Tasks.Core.Ports
 {
     public interface ITodoListUnitOfWork : IUnitOfWork
     {
-        Task<TodoListAggregate> GetOrCreateAsync(TodoListId id, Func<TodoListAggregate> createFunc);
-        Task<TodoListAggregate> GetAsync(TodoListId id);
+        Task<TodoListAggregate> GetOrCreateAsync(TodoListIdentifier id, Func<TodoListAggregate> createFunc);
+        Task<TodoListAggregate> GetAsync(TodoListIdentifier id);
     }
 }

@@ -2,36 +2,41 @@
 using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using MediatR;
+using Minglesports.Tasks.BuildingBlocks;
 using Minglesports.Tasks.BuildingBlocks.UserContext;
 using Minglesports.Tasks.Core.Domain;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
-using Minglesports.Tasks.Core.OperationHandlers.Requests.Queries;
+using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.Ports;
 
-namespace Minglesports.Tasks.Core.OperationHandlers
+namespace Minglesports.Tasks.Application.OperationHandlers
 {
-    internal class GetTodoListQueryHandler : IRequestHandler<GetTodoListQuery, TodoListModel>
+    internal class AddTaskCommandHandler : AsyncRequestHandler<AddTaskCommand>
     {
         private readonly ITodoListUnitOfWork _unitOfWork;
         private readonly IUserContextProvider _userContextProvider;
+        private readonly ITimeProvider _timeProvider;
 
-        public GetTodoListQueryHandler(
+        public AddTaskCommandHandler(
             ITodoListUnitOfWork unitOfWork,
-            IUserContextProvider userContextProvider)
+            IUserContextProvider userContextProvider,
+            ITimeProvider timeProvider)
         {
             _unitOfWork = Guard.Against.Null(unitOfWork, nameof(unitOfWork));
             _userContextProvider = Guard.Against.Null(userContextProvider, nameof(userContextProvider));
+            _timeProvider = Guard.Against.Null(timeProvider, nameof(timeProvider));
         }
 
-        public async Task<TodoListModel> Handle(GetTodoListQuery request, CancellationToken cancellationToken)
+        protected override async Task Handle(AddTaskCommand request, CancellationToken cancellationToken)
         {
             var user = _userContextProvider.UserContext.User;
-
             var todoList = await _unitOfWork.GetOrCreateAsync(
-                TodoListId.Define(user.UserId),
+                TodoListIdentifier.Define(user.UserId),
                 () => TodoListAggregate.Create(user.UserId));
 
-            return TodoListModel.FromDomain(todoList);
+            todoList.AddTask(request.Id, request.Name, request.DeadlineUtc, _timeProvider.UtcNow, request.Description);
+
+            await _unitOfWork.CommitAsync();
         }
     }
 }
