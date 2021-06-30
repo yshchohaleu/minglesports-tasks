@@ -51,7 +51,6 @@ namespace Minglesports.Tasks.Tests.OperationHandlers
             task.Status.Should().Be(TaskStatus.Pending);
             task.DeadlineUtc.Should().Be(tomorrow);
             task.CreateAtUtc.Should().Be(now);
-
         }
 
         private class TestFixture : Fixture
