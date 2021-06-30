@@ -21,5 +21,6 @@ namespace Minglesports.Tasks.BuildingBlocks
         }
 
         public DateTime UtcNow => _presetDateTime ?? DateTime.UtcNow;
+        public static ITimeProvider WithPresetValue(DateTime dateTime) => new TimeProvider(dateTime);
     }
 }
