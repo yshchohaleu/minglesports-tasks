@@ -76,13 +76,7 @@ namespace Minglesports.Tasks.Tests.OperationHandlers
             }
 
             public TestFixture WithTodoList(TodoListAggregate todoList)
-            {
-                _todoListUnitOfWork.Setup(x => x.GetAsync
-                    (
-                        It.IsAny<TodoListId>()
-                    ))
-                    .ReturnsAsync(todoList);
-
+            {   
                 _todoListUnitOfWork.Setup(x => x.GetOrCreateAsync(It.IsAny<TodoListId>(),
                         It.IsAny<Func<TodoListAggregate>>()
                     ))
