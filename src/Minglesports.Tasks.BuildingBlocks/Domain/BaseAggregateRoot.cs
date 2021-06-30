@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Minglesports.Tasks.BuildingBlocks.Messages;
 
 namespace Minglesports.Tasks.BuildingBlocks.Domain
 {
-    public abstract class BaseAggregateRoot<T> : IEntity<T>, IAggregateRoot
+    public abstract class BaseAggregateRoot<T> : BaseEntity<T>, IAggregateRoot
     {
-        [Timestamp]
-        public byte[] Timestamp { get; set; }
-
         public virtual void ClearUncommittedMessages()
         {
             ClearUncommittedEvents();
@@ -34,7 +30,5 @@ namespace Minglesports.Tasks.BuildingBlocks.Domain
         }
 
         #endregion
-
-        public T EntityId { get; protected set; }
     }
 }

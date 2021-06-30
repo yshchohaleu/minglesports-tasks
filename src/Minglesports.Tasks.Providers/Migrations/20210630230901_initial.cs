@@ -13,8 +13,8 @@ namespace Minglesports.Tasks.Providers.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Timestamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
-                    EntityId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    EntityId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Timestamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,13 +27,14 @@ namespace Minglesports.Tasks.Providers.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityId = table.Column<Guid>(type: "uniqueidentifier", maxLength: 100, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeadlineUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    TodoListId = table.Column<long>(type: "bigint", nullable: false)
+                    TodoListId = table.Column<long>(type: "bigint", nullable: false),
+                    EntityId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Timestamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {

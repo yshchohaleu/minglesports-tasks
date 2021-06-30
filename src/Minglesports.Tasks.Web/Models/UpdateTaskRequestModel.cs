@@ -18,7 +18,6 @@ namespace Minglesports.Tasks.Web.Models
             result
                 .IsNullOrEmpty(Name, nameof(Name))
                 .MaxLength(Name, 100, nameof(Name))
-                .IsGuid(id, nameof(id))
                 .ValidEnum<TaskStatus>(Status, nameof(Status));
 
             var taskId = !string.IsNullOrEmpty(id) ? TaskId.FromString(id) : TaskId.New();

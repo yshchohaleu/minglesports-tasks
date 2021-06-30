@@ -30,7 +30,7 @@ namespace Minglesports.Tasks.Providers.Entities
 
         public Task<TodoListAggregate> GetAsync(TodoListIdentifier id)
         {
-            return DbContext.TodoLists.SingleOrDefaultAsync(todo => todo.EntityId.Value == id.Value);
+             return DbContext.TodoLists.SingleOrDefaultAsync(todo => todo.EntityId.Value == id.Value);
         }
     }
 }

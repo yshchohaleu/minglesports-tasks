@@ -16,16 +16,6 @@ namespace Minglesports.Tasks.Web.Models
             return model;
         }
 
-        public static ResultModel IsGuid(this ResultModel model, string value, string propertyName)
-        {
-            if (Guid.TryParse(value, out _))
-            {
-                model.AddError(ApiConstants.ErrorCodes.BadRequest, $"{propertyName} cannot be parse to GUID");
-            }
-
-            return model;
-        }
-
         public static ResultModel ValidEnum<T>(this ResultModel model, string val, string propertyName)
             where T : struct
         {

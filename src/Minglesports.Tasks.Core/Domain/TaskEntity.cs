@@ -6,13 +6,12 @@ using Minglesports.Tasks.Core.Domain.ValueObjects;
 
 namespace Minglesports.Tasks.Core.Domain
 {
-    public class TaskEntity : IEntity<TaskId>
+    public class TaskEntity : BaseEntity<TaskId>
     {
         private TaskEntity()
         {
         }
 
-        public TaskId EntityId { get; private init; }
         public TaskName Name { get; private set; }
         public string Description { get; private set; }
         public DateTime CreateAtUtc { get; private init; }

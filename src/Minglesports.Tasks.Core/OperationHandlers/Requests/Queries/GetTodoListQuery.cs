@@ -23,5 +23,5 @@ namespace Minglesports.Tasks.Core.OperationHandlers.Requests.Queries
         }
     }
 
-    public record TaskModel(Guid Id, string Name, DateTime DeadlineUtc, string Description, string Status, DateTime CreateAtUtc);
+    public record TaskModel(string Id, string Name, DateTime DeadlineUtc, string Description, string Status, DateTime CreateAtUtc);
 }

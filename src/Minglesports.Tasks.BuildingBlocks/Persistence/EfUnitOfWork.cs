@@ -22,16 +22,12 @@ namespace Minglesports.Tasks.BuildingBlocks.Persistence
 
         public async Task CommitAsync()
         {
-            var changes = DbContext.ChangeTracker.Entries<TEntity>();
+            var entries = DbContext.ChangeTracker.Entries<TEntity>();
             var sendTasks = new List<Task>();
 
-            foreach (var entry in changes)
+            foreach (var entry in entries)
             {
-                if (entry.State == EntityState.Added ||
-                    entry.State == EntityState.Modified)
-                {
-                    sendTasks.Add(_messageSender.PublishEvents(entry.Entity.GetUncommittedEvents()));
-                }
+                sendTasks.Add(_messageSender.PublishEvents(entry.Entity.GetUncommittedEvents()));
             }
 
             try

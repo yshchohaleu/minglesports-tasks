@@ -29,7 +29,7 @@ namespace Minglesports.Tasks.Application.OperationHandlers
             var todoList = await _unitOfWork.GetAsync(TodoListIdentifier.Define(user.UserId));
 
             if (todoList == null)
-                throw new NotFoundException($"Todo list for user {user.UserId} not found");
+                throw new NotFoundException($"Todo list for UserId=[{user.UserId}] not found");
 
             todoList.UpdateTask(request.Id, request.Name, request.DeadlineUtc, request.Status, request.Description);
 

@@ -1,15 +1,20 @@
 ﻿using System;
+using Ardalis.GuardClauses;
 using Minglesports.Tasks.BuildingBlocks.Domain;
 
 namespace Minglesports.Tasks.Core.Domain.ValueObjects
 {
-    public class TaskId : SingleValueObject<Guid>
+    public class TaskId : SingleValueObject<string>
     {
-        private TaskId(Guid value) : base(value)
+        private TaskId(string value) : base(value)
         {
         }
 
-        public static TaskId New() => new (Guid.NewGuid());
-        public static TaskId FromString(string value) => new (Guid.Parse(value));
+        public static TaskId New() => new (Guid.NewGuid().ToString());
+        public static TaskId FromString(string value)
+        {
+            Guard.Against.NullOrWhiteSpace(value, nameof(value));
+            return new(value);
+        }
     }
 }

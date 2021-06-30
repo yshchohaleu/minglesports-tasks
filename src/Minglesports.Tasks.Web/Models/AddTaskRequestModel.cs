@@ -10,16 +10,14 @@ namespace Minglesports.Tasks.Web.Models
         public string Description { get; set; }
         public DateTime DeadlineUtc { get; set; }
 
-        public ResultModel TryConvertToCommand(string id, out AddTaskCommand command)
+        public ResultModel TryConvertToCommand(out AddTaskCommand command)
         {
             var result = new ResultModel();
             result
                 .IsNullOrEmpty(Name, nameof(Name))
-                .MaxLength(Name, 100, nameof(Name))
-                .IsGuid(id, nameof(id));
+                .MaxLength(Name, 100, nameof(Name));
 
-            var taskId = !string.IsNullOrEmpty(id) ? TaskId.FromString(id) : TaskId.New();
-            command = new AddTaskCommand(taskId, TaskName.Define(Name), DeadlineUtc, Description);
+            command = new AddTaskCommand(TaskId.New(), TaskName.Define(Name), DeadlineUtc, Description);
 
             return result;
         }

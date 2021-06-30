@@ -11,6 +11,7 @@ namespace Minglesports.Tasks.BuildingBlocks.Mediatr
         where TRequest : notnull
     {
         private readonly ILogger<LoggingBehaviour<TRequest, TResponse>> _logger;
+
         public LoggingBehaviour(ILogger<LoggingBehaviour<TRequest, TResponse>> logger)
         {
             _logger = Guard.Against.Null(logger, nameof(logger));
@@ -27,8 +28,8 @@ namespace Minglesports.Tasks.BuildingBlocks.Mediatr
             stopwatch.Stop();
 
             // response
-            _logger.LogInformation("Stop executing [{Response}] operation handler. Time elapsed = [{Time}] ms",
-                response.GetType().Name, stopwatch.ElapsedMilliseconds);
+            _logger.LogInformation("Stop executing [{Request}] operation handler. Time elapsed = [{Time}] ms",
+                request.GetType().Name, stopwatch.ElapsedMilliseconds);
             return response;
         }
     }

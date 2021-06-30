@@ -23,7 +23,7 @@ namespace Minglesports.Tasks.BuildingBlocks.Messages
         {
             return Task.WhenAll(
                 events.Select(@event => _mediator.Publish(@event))
-            );;
+            );
         }
     }
 }

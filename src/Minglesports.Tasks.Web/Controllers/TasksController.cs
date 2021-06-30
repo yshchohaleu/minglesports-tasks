@@ -6,7 +6,6 @@ using Minglesports.Tasks.Core.Domain.ValueObjects;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Queries;
 using Minglesports.Tasks.Web.Models;
-using Minglesports.Tasks.Web.Services;
 
 namespace Minglesports.Tasks.Web.Controllers
 {
@@ -29,16 +28,14 @@ namespace Minglesports.Tasks.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ResultModel>> AddTaskAsync(
-            [FromHeader(Name = ApiConstants.HttpHeaders.TaskIdTransactionHeader)] string id,
-            [FromBody] AddTaskRequestModel request)
+        public async Task<ActionResult<ResultModel>> AddTaskAsync([FromBody] AddTaskRequestModel request)
         {
-            var result = request.TryConvertToCommand(id, out var command);
+            var result = request.TryConvertToCommand(out var command);
             if (!result.Success)
                 return BadRequest(result);
 
             await _mediator.Send(command);
-            return result;
+            return Ok(result);
         }
 
         [HttpPut]
@@ -51,7 +48,7 @@ namespace Minglesports.Tasks.Web.Controllers
                 return BadRequest(result);
 
             await _mediator.Send(command);
-            return result;
+            return Ok(result);
         }
 
         [HttpDelete]
@@ -59,7 +56,6 @@ namespace Minglesports.Tasks.Web.Controllers
         public async Task<ActionResult<ResultModel>> DeleteTaskAsync([FromRoute] string id)
         {
             var result = new ResultModel();
-            result.IsGuid(id, nameof(id));
 
             if (!result.Success)
                 return BadRequest(result);

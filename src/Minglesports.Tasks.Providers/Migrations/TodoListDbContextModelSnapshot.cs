@@ -38,7 +38,7 @@ namespace Minglesports.Tasks.Providers.Migrations
 
             modelBuilder.Entity("Minglesports.Tasks.Core.Domain.TodoListAggregate", b =>
                 {
-                    b.OwnsOne("Minglesports.Tasks.Core.Domain.ValueObjects.TodoListId", "EntityId", b1 =>
+                    b.OwnsOne("Minglesports.Tasks.Core.Domain.ValueObjects.TodoListIdentifier", "EntityId", b1 =>
                         {
                             b1.Property<long>("TodoListAggregateId")
                                 .ValueGeneratedOnAdd()
@@ -84,6 +84,11 @@ namespace Minglesports.Tasks.Providers.Migrations
                                 .HasMaxLength(50)
                                 .HasColumnType("nvarchar(50)");
 
+                            b1.Property<byte[]>("Timestamp")
+                                .IsConcurrencyToken()
+                                .ValueGeneratedOnAddOrUpdate()
+                                .HasColumnType("rowversion");
+
                             b1.Property<long>("TodoListId")
                                 .HasColumnType("bigint");
 
@@ -103,9 +108,10 @@ namespace Minglesports.Tasks.Providers.Migrations
                                         .HasColumnType("bigint")
                                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                                    b2.Property<Guid>("Value")
+                                    b2.Property<string>("Value")
+                                        .IsRequired()
                                         .HasMaxLength(100)
-                                        .HasColumnType("uniqueidentifier")
+                                        .HasColumnType("nvarchar(100)")
                                         .HasColumnName("EntityId");
 
                                     b2.HasKey("TaskEntityId");
