@@ -17,7 +17,7 @@ namespace Minglesports.Tasks.Core.OperationHandlers
 
         public Task Handle(TaskUpdatedEvent notification, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Handling TaskUpdatedEventHandler... TaskId=[{Id}]", notification.Id);
+            _logger.LogInformation("Handling {Event}... TaskId=[{Id}]", nameof(TaskUpdatedEvent), notification.Id);
             return Task.CompletedTask;
         }
     }

@@ -30,7 +30,7 @@ Task: Entity
 
 ## Events
 
-There is one event that is published from `ToDoList` aggregate: `TaskUpdatedEvent`. At this moment the handler of this event (`TaskUpdatedEventHandler`) does nothing and is used for demonstration purposes only.
+There is one event that is published from `TodoList` aggregate: `TaskUpdatedEvent`. At this moment the handler of this event (`TaskUpdatedEventHandler`) does nothing and is used for demonstration purposes only.
 
 In general event dispatch works in the following way: 
 
