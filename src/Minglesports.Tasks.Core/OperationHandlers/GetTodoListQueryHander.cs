@@ -8,7 +8,7 @@ using Minglesports.Tasks.Core.Domain.ValueObjects;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Queries;
 using Minglesports.Tasks.Core.Ports;
 
-namespace Minglesports.Tasks.Application.OperationHandlers
+namespace Minglesports.Tasks.Core.OperationHandlers
 {
     internal class GetTodoListQueryHandler : IRequestHandler<GetTodoListQuery, TodoListModel>
     {

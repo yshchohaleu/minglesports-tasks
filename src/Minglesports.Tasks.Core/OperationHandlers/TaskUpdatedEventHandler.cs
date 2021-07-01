@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Events;
 
-namespace Minglesports.Tasks.Application.OperationHandlers
+namespace Minglesports.Tasks.Core.OperationHandlers
 {
     public class TaskUpdatedEventHandler : INotificationHandler<TaskUpdatedEvent>
     {

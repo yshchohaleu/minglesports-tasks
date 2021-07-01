@@ -113,5 +113,19 @@ namespace Minglesports.Tasks.Tests.Domain
             // assert
             todoList.Tasks.Should().BeEmpty();
         }
+
+        [Fact]
+        public void GivenTodoList_WhenTaskIsDeletedTwice_OperationShouldSucceed()
+        {
+            var todoList = _fixture.Create<TodoListAggregate>();
+            var taskId = todoList.Tasks.Single().EntityId;
+
+            // act
+            todoList.DeleteTask(taskId);
+            todoList.DeleteTask(taskId);
+
+            // assert
+            todoList.Tasks.Should().BeEmpty();
+        }
     }
 }

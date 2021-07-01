@@ -2,7 +2,7 @@
 using System.Linq;
 using Minglesports.Tasks.Web.Services;
 
-namespace Minglesports.Tasks.Web.Models
+namespace Minglesports.Tasks.Web.Models.Result
 {
     public static class ResultModelExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Minglesports.Tasks.Web.Models
+namespace Minglesports.Tasks.Web.Models.Result
 {
     public record ResultModel
     {

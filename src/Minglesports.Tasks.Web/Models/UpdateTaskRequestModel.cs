@@ -2,6 +2,7 @@
 using Minglesports.Tasks.Core.Domain;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
+using Minglesports.Tasks.Web.Models.Result;
 
 namespace Minglesports.Tasks.Web.Models
 {

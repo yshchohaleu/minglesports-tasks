@@ -6,6 +6,7 @@ using Minglesports.Tasks.Core.Domain.ValueObjects;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Queries;
 using Minglesports.Tasks.Web.Models;
+using Minglesports.Tasks.Web.Models.Result;
 
 namespace Minglesports.Tasks.Web.Controllers
 {
@@ -21,10 +22,10 @@ namespace Minglesports.Tasks.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<DataResultModel<TodoListModel>> GetAsync()
+        public async Task<DataResultModel<GetTasksResponseModel>> GetAsync()
         {
             var todoList = await _mediator.Send(new GetTodoListQuery());
-            return new DataResultModel<TodoListModel>(todoList);
+            return new DataResultModel<GetTasksResponseModel>(GetTasksResponseModel.FromOperationModel(todoList));
         }
 
         [HttpPost]
@@ -56,9 +57,6 @@ namespace Minglesports.Tasks.Web.Controllers
         public async Task<ActionResult<ResultModel>> DeleteTaskAsync([FromRoute] string id)
         {
             var result = new ResultModel();
-
-            if (!result.Success)
-                return BadRequest(result);
 
             await _mediator.Send(new DeleteTaskCommand(TaskId.FromString(id)));
             return Ok(result);

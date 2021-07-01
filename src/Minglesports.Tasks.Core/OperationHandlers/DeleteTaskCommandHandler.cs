@@ -8,7 +8,7 @@ using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.Ports;
 using NotFoundException = Minglesports.Tasks.Core.Exceptions.NotFoundException;
 
-namespace Minglesports.Tasks.Application.OperationHandlers
+namespace Minglesports.Tasks.Core.OperationHandlers
 {
     internal class DeleteTaskCommandHandler : AsyncRequestHandler<DeleteTaskCommand>
     {

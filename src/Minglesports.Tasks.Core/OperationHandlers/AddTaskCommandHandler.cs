@@ -9,7 +9,7 @@ using Minglesports.Tasks.Core.Domain.ValueObjects;
 using Minglesports.Tasks.Core.OperationHandlers.Requests.Commands;
 using Minglesports.Tasks.Core.Ports;
 
-namespace Minglesports.Tasks.Application.OperationHandlers
+namespace Minglesports.Tasks.Core.OperationHandlers
 {
     internal class AddTaskCommandHandler : AsyncRequestHandler<AddTaskCommand>
     {
