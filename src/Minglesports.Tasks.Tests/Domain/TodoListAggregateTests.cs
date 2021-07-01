@@ -17,7 +17,7 @@ namespace Minglesports.Tasks.Tests.Domain
             .Customize(new TodoListDomainCustomization());
 
         [Fact]
-        public void GivenTodoList_WhenNewTaskIsAdded_TaskShouldBeAdded()
+        public void GivenTodoList_WhenNewTaskIsAdded_TaskShouldBeAdded_InPendingStatus()
         {
             var todoList = TodoListAggregate.Create(_fixture.Create<UserId>());
 
