@@ -1,7 +1,4 @@
-The initial requirements of th assignment were changed a little bit :). To be more precise: 
-
-1. Tasks are stored in Todo lists per user
-2. Add simple approach to publish events  
+The initial requirements of the assignment were changed a little bit :). To be more precise: "Tasks are stored in Todo lists per user" 
 
 ## Solution structure
 
@@ -16,7 +13,7 @@ The initial requirements of th assignment were changed a little bit :). To be mo
 Application has the following domain structure:
 
 ```
-ToDoList : AggragateRoot
+ToDoList : AggregateRoot
     - Id
     - UserId 
     - Task[]
