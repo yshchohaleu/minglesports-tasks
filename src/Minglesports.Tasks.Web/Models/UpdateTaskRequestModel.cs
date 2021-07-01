@@ -15,15 +15,19 @@ namespace Minglesports.Tasks.Web.Models
 
         public ResultModel TryConvertToCommand(string id, out UpdateTaskCommand command)
         {
+            command = null;
             var result = new ResultModel();
             result
                 .IsNullOrEmpty(Name, nameof(Name))
                 .MaxLength(Name, 100, nameof(Name))
                 .ValidEnum<TaskStatus>(Status, nameof(Status));
 
-            var taskId = !string.IsNullOrEmpty(id) ? TaskId.FromString(id) : TaskId.New();
-            command = new UpdateTaskCommand(taskId, TaskName.Define(Name), DeadlineUtc, Description,
-                Enum.Parse<TaskStatus>(Status, true));
+            if (result.Success)
+            {
+                var taskId = !string.IsNullOrEmpty(id) ? TaskId.FromString(id) : TaskId.New();
+                command = new UpdateTaskCommand(taskId, TaskName.Define(Name), DeadlineUtc, Description,
+                    Enum.Parse<TaskStatus>(Status, true));
+            }
 
             return result;
         }

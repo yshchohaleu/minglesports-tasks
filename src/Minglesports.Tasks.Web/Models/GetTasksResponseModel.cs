@@ -15,9 +15,9 @@ namespace Minglesports.Tasks.Web.Models
                 response.Add(new TaskResponseModel
                 (
                     task.EntityId,
+                    task.Status.ToString(),
                     task.Name,
                     task.Description,
-                    task.Status.ToString(),
                     task.DeadlineUtc,
                     task.CreateAtUtc
                 ));

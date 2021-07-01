@@ -7,6 +7,11 @@ using Minglesports.Tasks.BuildingBlocks.Messages;
 
 namespace Minglesports.Tasks.BuildingBlocks.Persistence
 {
+    /// <summary>
+    /// Entity Framework unit of work implementation.
+    /// This class exposes one public method `CommitAsync()`. During it's execution entities are stored in database
+    /// plus all events stored in aggregate roots are dispatched.
+    /// </summary>
     public abstract class EfUnitOfWork<TEntity, TDbContext> : IUnitOfWork
         where TEntity : class, IAggregateRoot
         where TDbContext: DbContext

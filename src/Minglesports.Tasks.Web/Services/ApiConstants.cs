@@ -5,7 +5,6 @@
         public class HttpHeaders
         {
             public const string UserIdHeader = "MS-User-Id";
-            public const string TaskIdTransactionHeader = "MS-Task-Id";
         }
 
         public class ErrorCodes

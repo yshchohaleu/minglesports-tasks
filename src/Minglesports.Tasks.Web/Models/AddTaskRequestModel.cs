@@ -13,12 +13,14 @@ namespace Minglesports.Tasks.Web.Models
 
         public ResultModel TryConvertToCommand(out AddTaskCommand command)
         {
+            command = null;
             var result = new ResultModel();
             result
                 .IsNullOrEmpty(Name, nameof(Name))
                 .MaxLength(Name, 100, nameof(Name));
 
-            command = new AddTaskCommand(TaskId.New(), TaskName.Define(Name), DeadlineUtc, Description);
+            if (result.Success)
+                command = new AddTaskCommand(TaskId.New(), TaskName.Define(Name), DeadlineUtc, Description);
 
             return result;
         }
