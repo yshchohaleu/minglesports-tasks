@@ -29,7 +29,7 @@ namespace Minglesports.Tasks.Core.OperationHandlers
             var todoList = await _unitOfWork.GetAsync(TodoListIdentifier.Define(user.UserId));
 
             if (todoList == null)
-                throw new NotFoundException($"Todo list for UserId=[{user.UserId}] not found");
+                throw new NotFoundException($"Todo list for UserId='{user.UserId}' not found");
 
             todoList.DeleteTask(request.Id);
 

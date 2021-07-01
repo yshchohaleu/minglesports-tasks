@@ -55,7 +55,7 @@ namespace Minglesports.Tasks.Core.Domain
             var task = _tasks.GetById(id);
             if (task == null)
             {
-                throw new NotFoundException($"Task with Id = {id} was not found");
+                throw new NotFoundException($"Task with Id='{id}' was not found");
             }
 
             return task;

@@ -107,5 +107,6 @@ dotnet ef database update --project Minglesports.Tasks.Providers --startup-proje
 ## Missing features
 
 1. Logging (with custom properties per log entry and the propagation of correlation id)
+2. More unit tests...
 
 
