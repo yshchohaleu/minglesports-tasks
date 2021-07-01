@@ -6,6 +6,7 @@ using Minglesports.Tasks.BuildingBlocks.UserContext;
 using Minglesports.Tasks.Core.Domain;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
 using Minglesports.Tasks.Core.Exceptions;
+using Minglesports.Tasks.Core.OperationHandlers.Requests.Events;
 using Xunit;
 
 namespace Minglesports.Tasks.Tests.Domain
@@ -82,6 +83,12 @@ namespace Minglesports.Tasks.Tests.Domain
             task.Status.Should().Be(status);
             task.DeadlineUtc.Should().Be(deadline);
             task.Description.Should().Be(description);
+
+            // events
+            var events = todoList.GetUncommittedEvents().ToArray();
+            events.Should().HaveCount(1);
+            var @event = events[0];
+            @event.Should().BeOfType<TaskUpdatedEvent>();
         }
 
         [Fact]

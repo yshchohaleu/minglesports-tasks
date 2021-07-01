@@ -1,7 +1,6 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 using Minglesports.Tasks.BuildingBlocks.Domain;
-using Minglesports.Tasks.BuildingBlocks.Guards;
 using Minglesports.Tasks.Core.Domain.ValueObjects;
 
 namespace Minglesports.Tasks.Core.Domain
@@ -27,7 +26,6 @@ namespace Minglesports.Tasks.Core.Domain
         {
             Guard.Against.Null(name, nameof(name));
             Guard.Against.Default(deadlineUtc, nameof(deadlineUtc));
-            Guard.Against.GreaterThan(createdAtUtc, deadlineUtc, nameof(deadlineUtc));
 
             return new()
             {
