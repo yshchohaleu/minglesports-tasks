@@ -46,8 +46,6 @@ namespace Minglesports.Tasks.Core.Domain
             Guard.Against.Null(name, nameof(name));
             Guard.Against.Default(deadlineUtc, nameof(deadlineUtc));
 
-            // check deadline ?
-
             Name = name;
             DeadlineUtc = deadlineUtc;
             Description = description;

@@ -1,4 +1,4 @@
-I've decided to change a little bit the initial requirements. To be more precise: 
+The initial requirements were changed a little bit. To be more precise: 
 
 1. Tasks are stored in Todo lists per user
 2. Add simple approach to publish events  
